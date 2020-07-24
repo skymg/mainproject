@@ -10,7 +10,7 @@ requests.packages.urllib3.disable_warnings()
 # Create your views here.
 def index(request):
     # return render(request,'indexTest.html')
-    return  render(request, 'indexEmpty.html')
+    return render(request, 'indexEmpty.html')
 def cal(request):
 
     return render(request,"Cal.html")

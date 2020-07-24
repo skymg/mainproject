@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Dashboard</title>
+        <title>CISCO</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
@@ -75,7 +75,7 @@
                     <ul class="sidebar-menu">
                         <li class="active">
                             <a href="../save_xml">
-                                <i class="fa fa-dashboard"></i> <span>11111</span>
+                                <i class="fa fa-dashboard"></i> <span>Interface Information</span>
                             </a>
                         </li>
 						<li class="active">
@@ -109,38 +109,116 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Blank page
+                        Interface Information
                         <small>Control panel</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Blank page</li>
-                    </ol>
+{#                    <ol class="breadcrumb">#}
+{#                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+{#                        <li class="active">Blank page</li>#}
+{#                    </ol>#}
                 </section>
 
                 <!-- Main content -->
 
 
                 <section class="content">
+                    <table class="table">
+                        <caption id="uuid" style="color: #00ad29;font-size: medium" ></caption>
+                    </table>
 <table class="table">
-	<caption>table</caption>
+	<caption>interface1</caption>
    <thead>
       <tr>
-         <th>Name1</th>
-         <th>Name2</th>
+         <th>KEY</th>
+         <th>VALUE</th>
       </tr>
    </thead>
    <tbody>
       <tr>
-         <td></td>
-         <td></td>
+         <td>interface name</td>
+         <td id="interface_name"></td>
       </tr>
       <tr>
-         <td></td>
-         <td></td>
+         <td>interface type @xmlns:ianaift</td>
+         <td id="interface_type_xmlns"></td>
       </tr>
+       <tr>
+         <td>interface type #text</td>
+         <td id="interface_type_text"></td>
+      </tr>
+      <tr>
+         <td>interface admin-status</td>
+         <td id="interface_admin_status"></td>
+      </tr>
+      <tr>
+         <td>interface oper-status</td>
+         <td id="interface_oper_status"></td>
+      </tr>
+
+
+      <tr>
+         <td>interface last-change</td>
+         <td id="interface_last_change"></td>
+      </tr>
+       <tr>
+         <td>interface phys-address</td>
+         <td id="interface_phys_address"></td>
+      </tr>
+       <tr>
+         <td>interface_speed</td>
+         <td id="interface_speed"></td>
+      </tr>
+
    </tbody>
 </table>
+     <table class="table">
+	<caption>interface2</caption>
+   <thead>
+      <tr>
+         <th>KEY</th>
+         <th>VALUE</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>interface name</td>
+         <td id="interface_name1"></td>
+      </tr>
+      <tr>
+         <td>interface type @xmlns:ianaift</td>
+         <td id="interface_type_xmlns1"></td>
+      </tr>
+       <tr>
+         <td>interface type #text</td>
+         <td id="interface_type_text1"></td>
+      </tr>
+      <tr>
+         <td>interface admin-status</td>
+         <td id="interface_admin_status1"></td>
+      </tr>
+      <tr>
+         <td>interface oper-status</td>
+         <td id="interface_oper_status1"></td>
+      </tr>
+
+
+      <tr>
+         <td>interface last-change</td>
+         <td id="interface_last_change1"></td>
+      </tr>
+       <tr>
+         <td>interface phys-address</td>
+         <td id="interface_phys_address1"></td>
+      </tr>
+       <tr>
+         <td>interface_speed</td>
+         <td id="interface_speed1"></td>
+      </tr>
+
+   </tbody>
+</table>
+
+
 <script>
     {#var dict = {{ data|safe }}#}
     {#    alert(dict)#}
@@ -148,7 +226,27 @@
     {#alert(111)#}
     $(function () {
         var dict = {{ data|safe }}
-        $("table tr td").append(dict['rpc-reply']['@xmlns'])
+        $("#uuid").append(dict['rpc-reply']['@message-id'])
+        {#alert(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['name'])#}
+        $("#interface_name").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['name'])
+        $("#interface_type_xmlns").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['type']['@xmlns:ianaift'])
+        $("#interface_type_text").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['type']['#text'])
+        $("#interface_admin_status").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['admin-status'])
+        $("#interface_oper_status").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['oper-status'])
+        $("#interface_last_change").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['last-change'])
+        $("#interface_phys_address").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['phys-address'])
+        $("#interface_speed").append(dict['rpc-reply']['data']['interfaces-state']['interface'][0]['speed'])
+{#alert(dict['rpc-reply']['data']['interfaces-state']['interface'][1])#}
+        $("#interface_name1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['name'])
+        $("#interface_type_xmlns1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['type']['@xmlns:ianaift'])
+        $("#interface_type_text1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['type']['#text'])
+        $("#interface_admin_status1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['admin-status'])
+        $("#interface_oper_status1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['oper-status'])
+        $("#interface_last_change1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['last-change'])
+        $("#interface_phys_address1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['phys-address'])
+        $("#interface_speed1").append(dict['rpc-reply']['data']['interfaces-state']['interface'][1]['speed'])
+
+
     })
 </script>
 

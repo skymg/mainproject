@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<rpc-reply message-id="urn:uuid:d63b9617-c96e-494f-88bd-279db2ac2923" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+<rpc-reply message-id="urn:uuid:ed95f2f8-c14c-46ad-99bc-f387165b5def" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
 	<data>
 		<interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
 			<interface>
@@ -7,21 +7,21 @@
 				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
 				<admin-status>up</admin-status>
 				<oper-status>up</oper-status>
-				<last-change>2020-07-24T05:40:52.000025+00:00</last-change>
+				<last-change>2020-07-24T11:21:26.000692+00:00</last-change>
 				<if-index>1</if-index>
 				<phys-address>08:00:27:81:48:bd</phys-address>
 				<speed>1024000000</speed>
 				<statistics>
-					<discontinuity-time>2020-07-24T05:37:45.000111+00:00</discontinuity-time>
-					<in-octets>463429</in-octets>
-					<in-unicast-pkts>3597</in-unicast-pkts>
+					<discontinuity-time>2020-07-24T11:18:53.000304+00:00</discontinuity-time>
+					<in-octets>272372</in-octets>
+					<in-unicast-pkts>2260</in-unicast-pkts>
 					<in-broadcast-pkts>0</in-broadcast-pkts>
 					<in-multicast-pkts>0</in-multicast-pkts>
 					<in-discards>0</in-discards>
 					<in-errors>0</in-errors>
 					<in-unknown-protos>0</in-unknown-protos>
-					<out-octets>2409533</out-octets>
-					<out-unicast-pkts>2687</out-unicast-pkts>
+					<out-octets>2015495</out-octets>
+					<out-unicast-pkts>2080</out-unicast-pkts>
 					<out-broadcast-pkts>0</out-broadcast-pkts>
 					<out-multicast-pkts>0</out-multicast-pkts>
 					<out-discards>0</out-discards>
@@ -33,12 +33,12 @@
 				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:other</type>
 				<admin-status>up</admin-status>
 				<oper-status>up</oper-status>
-				<last-change>2020-07-24T05:40:41.000148+00:00</last-change>
+				<last-change>2020-07-24T11:21:16.000351+00:00</last-change>
 				<if-index>0</if-index>
 				<phys-address>00:00:00:00:00:00</phys-address>
 				<speed>1650065408</speed>
 				<statistics>
-					<discontinuity-time>2020-07-24T05:37:45.000111+00:00</discontinuity-time>
+					<discontinuity-time>2020-07-24T11:18:53.000304+00:00</discontinuity-time>
 					<in-octets>0</in-octets>
 					<in-unicast-pkts>0</in-unicast-pkts>
 					<in-broadcast-pkts>0</in-broadcast-pkts>
