@@ -84,9 +84,10 @@ def save_xml(reques):
         f.close()
 
     convertedDict = xmltodict.parse(xmlStr);
-    jsonStr = json.dumps(convertedDict, indent=1);
+    jsonStr = json.dumps(convertedDict);
+    back_msg = {"name": "xiaoming", 'age': 123}
     # return render(reques,'netconfig.html',context={"data":jsonStr})
     return render(reques, 'xmlToJson.html',context={"data":jsonStr})
-    #return JsonResponse(json.loads(jsonStr),safe=False)
+    # return JsonResponse(json.dumps(back_msg),safe=False)
     # print(xml_data)
 
