@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^show_all_interface/',views.show_all_interface),
     url(r'^add_interFaceFromTable/',views.add_interFaceFromTable),
     url(r'^add_inter_with_form/',views.add_inter_with_form,name='addinterface'),
-
+    url(r'^parsexml/',views.parsexml)
 
 ]

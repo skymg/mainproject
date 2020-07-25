@@ -13,7 +13,7 @@ requests.packages.urllib3.disable_warnings()
 # Create your views here.
 def index(request):
     # return render(request,'indexTest.html')
-    parsexml()
+    # parsexml()
     return render(request, 'indexEmpty.html')
 
 
@@ -234,7 +234,7 @@ def add_inter_with_form(request):
     return render(request, 'show_all_interface.html')
 
 # parse xml file
-def parsexml():
+def parsexml(request):
     dom1 = parse('all_interface.xml')
     data = dom1.documentElement
     interfaces = data.getElementsByTagName('interface')
@@ -245,5 +245,6 @@ def parsexml():
     with open('interface_name.txt','w') as f:
         f.write(str(interfaceNameList))
         f.close()
+    return render(request,'show_interface_name.html',{"data":interfaceNameList})
     # print(interfaceNameList)
 
