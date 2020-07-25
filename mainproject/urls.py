@@ -24,4 +24,9 @@ urlpatterns = [
     url(r'^cisco/',views.cisco),
     url(r'^save_xml/',views.save_xml),
     url(r'^add_interface/',views.add_interface),
+    url(r'^load_deletp_page/',views.load_deletp_page),
+    url(r'^get_interface_name/',views.get_interface_name,name='check'),
+    url(r'^show_all_interface/',views.show_all_interface)
+
+
 ]
