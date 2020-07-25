@@ -47,7 +47,7 @@ def cisco(request):
 
 
     # 保存xml
-def save_xml(reques):
+def save_xml(request):
     m = manager.connect(
         host="192.168.56.101",
         port=830,
@@ -87,7 +87,39 @@ def save_xml(reques):
     jsonStr = json.dumps(convertedDict);
     back_msg = {"name": "xiaoming", 'age': 123}
     # return render(reques,'netconfig.html',context={"data":jsonStr})
-    return render(reques, 'xmlToJson.html',context={"data":jsonStr})
+    return render(request, 'xmlToJson.html',context={"data":jsonStr})
     # return JsonResponse(json.dumps(back_msg),safe=False)
     # print(xml_data)
+def add_interface(request):
+    api_url = "https://192.168.56.101/restconf/data/ietf-interfaces:interfaces"
+    headers = { "Accept": "application/yang-data+json",
+                "Content-type":"application/yang-data+json"
+              }
+
+    basicauth = ("cisco", "cisco123!")
+
+    yangConfig = {
+        "ietf-interfaces:interface": {
+            "name": "Loopback444",
+            "description": "apple",
+            "type": "iana-if-type:softwareLoopback",
+
+            "ietf-ip:ipv4": {
+                "address": [
+                    {
+                        "ip": "99.99.99.1",
+                        "netmask": "255.255.255.0"
+                    }
+                ]
+            },
+            "ietf-ip:ipv6": {}
+        }
+    }
+    resp = requests.post(api_url, data=json.dumps(yangConfig), auth=basicauth, headers=headers, verify=False)
+    if(resp.status_code >= 200 and resp.status_code <= 299):
+        print("STATUS OK: {}".format(resp.status_code))
+    else:
+        print("Error code {}, reply: {}".format(resp.status_code, resp.json()))
+    return render(request,'addInterface.html',context={"data":json.dumps(yangConfig)})
+
 

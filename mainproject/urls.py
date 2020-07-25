@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^caltwonumber/',views.caltwonumber),
     url(r'^cisco/',views.cisco),
     url(r'^save_xml/',views.save_xml),
+    url(r'^add_interface/',views.add_interface),
 ]
