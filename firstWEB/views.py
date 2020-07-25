@@ -6,12 +6,14 @@ from ncclient import manager
 import xml.dom.minidom
 import xmltodict
 from django.shortcuts import redirect
+from xml.dom.minidom import parse
 requests.packages.urllib3.disable_warnings()
 
 
 # Create your views here.
 def index(request):
     # return render(request,'indexTest.html')
+    parsexml()
     return render(request, 'indexEmpty.html')
 
 
@@ -83,10 +85,10 @@ def save_xml(request):
     # json_str = json.dumps(converteJson)
     # 将xml数据保存在本地
     xml_data = xml.dom.minidom.parseString(netconf_reply.xml).toprettyxml()
-    fo = open("save.xml1", "w")
+    fo = open("save.xml", "w")
     fo.write(xml_data)
     fo.close()
-    with  open('save.xml1', 'r') as f:
+    with  open('save.xml', 'r') as f:
         xmlStr = f.read()
         f.close()
 
@@ -184,10 +186,10 @@ def show_all_interface(request):
     netconf_reply = m.get(filter=netconf_filter)
     # 将xml数据保存在本地
     xml_data = xml.dom.minidom.parseString(netconf_reply.xml).toprettyxml()
-    fo = open("all_interface.xml1", "w")
+    fo = open("all_interface.xml", "w")
     fo.write(xml_data)
     fo.close()
-    with  open('all_interface.xml1', 'r') as f:
+    with  open('all_interface.xml', 'r') as f:
         xmlStr = f.read()
         # print(xmlStr)
         f.close()
@@ -195,3 +197,53 @@ def show_all_interface(request):
     convertedDict = xmltodict.parse(xmlStr);
     data = json.dumps(convertedDict);
     return render(request, 'show_all_interface.html', context={"data": xmlStr})
+
+#interface form
+def add_interFaceFromTable(request):
+    return render(request,'add_interface_form.html')
+
+# get interface information from html form
+def add_inter_with_form(request):
+    interfaceName = request.POST.get('interface_name')
+    interfaceDescription = request.POST.get('interface_description')
+    interfaceType = request.POST.get('interface_type')
+    interfaceIP = request.POST.get('interface_ip')
+    print(interfaceName,interfaceDescription,interfaceType,interfaceIP)
+
+    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces"
+    headers = {"Accept": "application/yang-data+json",
+               "Content-type": "application/yang-data+json"
+               }
+
+    basicauth = ("cisco", "cisco123!")
+    yangConfig = {
+        'ietf-interfaces:interface': {'ietf-ip:ipv6': {}, 'enabled': False, 'type': interfaceType,
+                                      'name': interfaceName,
+                                      'ietf-ip:ipv4': {'address': [{'ip': interfaceIP, 'netmask': '255.255.255.0'}]},
+                                      'description': interfaceDescription}}
+
+    # print("4444444444")
+    # print(yangConfig)
+    # print("444444")
+    resp = requests.post(api_url, data=json.dumps(yangConfig), auth=basicauth, headers=headers, verify=False)
+    if (resp.status_code >= 200 and resp.status_code <= 299):
+        print("STATUS OK: {}".format(resp.status_code))
+        return redirect('/show_all_interface/')
+    else:
+        print("Error code {}, reply: {}".format(resp.status_code, resp.json()))
+    return render(request, 'show_all_interface.html')
+
+# parse xml file
+def parsexml():
+    dom1 = parse('all_interface.xml')
+    data = dom1.documentElement
+    interfaces = data.getElementsByTagName('interface')
+    interfaceNameList = []
+    for interface in interfaces:
+        interfaceName = interface.getElementsByTagName('name')[0].childNodes[0].nodeValue
+        interfaceNameList.append(interfaceName)
+    with open('interface_name.txt','w') as f:
+        f.write(str(interfaceNameList))
+        f.close()
+    # print(interfaceNameList)
+

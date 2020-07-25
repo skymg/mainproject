@@ -111,7 +111,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                DELETE INTERFACE
+                ADD INTERFACE
                 <small>Control panel</small>
             </h1>
             <ol class="breadcrumb">
@@ -122,13 +122,25 @@
 
         <!-- Main content -->
         <section class="content">
-            <form action="{% url 'check' %}" method="post">
+            <form action="{% url 'addinterface' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="exampleInputEmail1">Interface Name</label>
 
                     <input type="text" name="interface_name" class="form-control"
                            placeholder="Please input interface name">
+                     <label for="exampleInputEmail1">Interface Descripton</label>
+
+                    <input type="text" name="interface_description" class="form-control"
+                           placeholder="Please input interface description">
+                     <label for="exampleInputEmail1">Interface Type</label>
+
+                    <input type="text" name="interface_type" class="form-control"
+                           placeholder="Please input interface type">
+                     <label for="exampleInputEmail1">Interface IP</label>
+
+                    <input type="text" name="interface_ip" class="form-control"
+                           placeholder="Please input interface ip">
                 </div>
                 <button type="submit" class="btn btn-danger">SUBMIT</button>
             </form>
