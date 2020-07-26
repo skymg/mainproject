@@ -17,6 +17,9 @@ def index(request):
     return render(request, 'indexEmpty.html')
 
 
+def templefile(request):
+    return render(request,'templefile.html')
+
 def cal(request):
     return render(request, "Cal.html")
 
@@ -96,6 +99,7 @@ def save_xml(request):
     jsonStr = json.dumps(convertedDict);
     # back_msg = {"name": "xiaoming", 'age': 123}
     # return render(reques,'netconfig.html',context={"data":jsonStr})
+    print(jsonStr)
     return render(request, 'xmlToJson.html', context={"data": jsonStr})
     # return JsonResponse(json.dumps(back_msg),safe=False)
     # print(xml_data)
@@ -248,3 +252,26 @@ def parsexml(request):
     return render(request,'show_interface_name.html',{"data":interfaceNameList})
     # print(interfaceNameList)
 
+
+# get url parameter from <a> table
+def edit_show(request):
+    name = request.GET.get('name')
+    print(name)
+    data = get_one_interface_information(name)
+    dict = {"Name": "Zara", "Age": 7, "Class": "First"}
+    # data = json.loads(data)
+    # return JsonResponse({"data":data},safe=False,json_dumps_params={'ensure_ascii':False})
+
+    return render(request,'detal_interface_byName.html',context={"data":data})
+# get interface by interfaceName
+def get_one_interface_information(interfacename):
+    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface="+interfacename
+    headers = {
+        "Accept": "application/yang-data+json",
+        "Content-type": "application/yang-data+json"
+    }
+    basicauth = ("cisco", "cisco123!")
+    resp = requests.get(api_url, auth=basicauth, headers=headers, verify=False)
+    response_json = resp.json()
+    data = json.dumps(response_json)
+    return data

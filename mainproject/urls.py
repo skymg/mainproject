@@ -19,6 +19,7 @@ from firstWEB import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/',views.index),
+    url(r'^templefile/',views.templefile),
     url(r'^cal/',views.cal),
     url(r'^caltwonumber/',views.caltwonumber),
     url(r'^cisco/',views.cisco),
@@ -29,6 +30,9 @@ urlpatterns = [
     url(r'^show_all_interface/',views.show_all_interface),
     url(r'^add_interFaceFromTable/',views.add_interFaceFromTable),
     url(r'^add_inter_with_form/',views.add_inter_with_form,name='addinterface'),
-    url(r'^parsexml/',views.parsexml)
+    url(r'^parsexml/',views.parsexml),
+    url(r'^edit_show/',views.edit_show),
+
+
 
 ]
