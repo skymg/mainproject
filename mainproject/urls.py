@@ -32,7 +32,8 @@ urlpatterns = [
     url(r'^add_inter_with_form/',views.add_inter_with_form,name='addinterface'),
     url(r'^parsexml/',views.parsexml),
     url(r'^edit_show/',views.edit_show),
-
+    url(r'^delete_show/',views.delete_show),
+    url(r'^edit_inter_with_form/',views.edit_inter_with_form,name='editinterface'),
 
 
 ]
