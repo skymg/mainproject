@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<rpc-reply message-id="urn:uuid:c31b2ce3-a70e-412d-882f-fb4f77875e54" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+<rpc-reply message-id="urn:uuid:6c736ff9-97ac-4cb2-9b9e-79c6ae098b31" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
 	<data>
 		<interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
 			<interface>
@@ -7,21 +7,47 @@
 				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
 				<admin-status>up</admin-status>
 				<oper-status>up</oper-status>
-				<last-change>2020-07-27T13:37:56.000842+00:00</last-change>
+				<last-change>2020-07-27T13:37:57.000272+00:00</last-change>
 				<if-index>1</if-index>
 				<phys-address>08:00:27:b4:0a:e1</phys-address>
 				<speed>1024000000</speed>
 				<statistics>
-					<discontinuity-time>2020-07-27T13:35:17.000803+00:00</discontinuity-time>
-					<in-octets>290014</in-octets>
-					<in-unicast-pkts>2277</in-unicast-pkts>
+					<discontinuity-time>2020-07-27T13:35:18.000233+00:00</discontinuity-time>
+					<in-octets>373055</in-octets>
+					<in-unicast-pkts>3034</in-unicast-pkts>
 					<in-broadcast-pkts>0</in-broadcast-pkts>
 					<in-multicast-pkts>0</in-multicast-pkts>
 					<in-discards>0</in-discards>
 					<in-errors>0</in-errors>
 					<in-unknown-protos>0</in-unknown-protos>
-					<out-octets>2654531</out-octets>
-					<out-unicast-pkts>2801</out-unicast-pkts>
+					<out-octets>3000296</out-octets>
+					<out-unicast-pkts>3170</out-unicast-pkts>
+					<out-broadcast-pkts>0</out-broadcast-pkts>
+					<out-multicast-pkts>0</out-multicast-pkts>
+					<out-discards>0</out-discards>
+					<out-errors>0</out-errors>
+				</statistics>
+			</interface>
+			<interface>
+				<name>Loopback8888</name>
+				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+				<admin-status>down</admin-status>
+				<oper-status>down</oper-status>
+				<last-change>2020-07-27T13:55:24.000192+00:00</last-change>
+				<if-index>5</if-index>
+				<phys-address>00:1e:49:91:1c:00</phys-address>
+				<speed>3897032704</speed>
+				<statistics>
+					<discontinuity-time>2020-07-27T13:35:18.000232+00:00</discontinuity-time>
+					<in-octets>0</in-octets>
+					<in-unicast-pkts>0</in-unicast-pkts>
+					<in-broadcast-pkts>0</in-broadcast-pkts>
+					<in-multicast-pkts>0</in-multicast-pkts>
+					<in-discards>0</in-discards>
+					<in-errors>0</in-errors>
+					<in-unknown-protos>0</in-unknown-protos>
+					<out-octets>0</out-octets>
+					<out-unicast-pkts>0</out-unicast-pkts>
 					<out-broadcast-pkts>0</out-broadcast-pkts>
 					<out-multicast-pkts>0</out-multicast-pkts>
 					<out-discards>0</out-discards>
@@ -33,12 +59,12 @@
 				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:other</type>
 				<admin-status>up</admin-status>
 				<oper-status>up</oper-status>
-				<last-change>2020-07-27T13:37:46.000048+00:00</last-change>
+				<last-change>2020-07-27T13:37:46.000476+00:00</last-change>
 				<if-index>0</if-index>
 				<phys-address>00:00:00:00:00:00</phys-address>
 				<speed>1650065408</speed>
 				<statistics>
-					<discontinuity-time>2020-07-27T13:35:17.000803+00:00</discontinuity-time>
+					<discontinuity-time>2020-07-27T13:35:18.000231+00:00</discontinuity-time>
 					<in-octets>0</in-octets>
 					<in-unicast-pkts>0</in-unicast-pkts>
 					<in-broadcast-pkts>0</in-broadcast-pkts>

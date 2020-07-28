@@ -145,11 +145,32 @@ def load_deletp_page(request):
     return render(request, 'get_interfaceName.html')
 
 
+def deleteinter(interfaceName):
+    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface=" + interfaceName
+    # api_url =api_url+"aaa"
+    # print(api_url)
+    headers = {"Accept": "application/yang-data+json",
+               "Content-type": "application/yang-data+json"
+               }
+
+    basicauth = ("cisco", "cisco123!")
+
+    resp = requests.delete(api_url, auth=basicauth, headers=headers, verify=False)
+    if (resp.status_code >= 200 and resp.status_code <= 299):
+        print("STATUS OK: {}".format(resp.status_code))
+        # add interface success redirect to "show_all_interface"
+        # return redirect('/show_all_interface/')
+    else:
+        print("Error code {}, reply: {}".format(resp.status_code, resp.json()))
+    print(type(interfaceName))
+    #
+
+
 # get interface name from html input form
 # delete interface by interfacename
 def get_interface_name(request):
     interfaceName = request.POST.get('interface_name')
-    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface="+interfaceName
+    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface=" + interfaceName
     # api_url =api_url+"aaa"
     # print(api_url)
     headers = {"Accept": "application/yang-data+json",
@@ -352,13 +373,15 @@ def edit_inter_with_form(request):
 
     # des ip enable
     print(interface_name, interface_type, interface_ip, interface_description)
-    modify_interface(interface_name,interface_type,interface_ip,interface_description)
+    # Call the method of modify_interface to edit the form
+    modify_interface(interface_name, interface_type, interface_ip, interface_description)
     return redirect('/show_all_interface/')
     return JsonResponse("ok", safe=False)
 
-#modify interface information by interface_name
-def modify_interface(interface_name,interface_type,interface_ip,interface_description):
-    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface="+interface_name
+
+# modify interface information by interface_name
+def modify_interface(interface_name, interface_type, interface_ip, interface_description):
+    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface=" + interface_name
     headers = {"Accept": "application/yang-data+json",
                "Content-type": "application/yang-data+json"
                }
@@ -387,21 +410,11 @@ def modify_interface(interface_name,interface_type,interface_ip,interface_descri
     else:
         print("Error code {}, reply: {}".format(resp.status_code, resp.json()))
 
+
+# delete interface
 def delete_show(request):
+    # get interface name from url's parameters
     name = request.GET.get('name')
-    print(name)
-    api_url = "https://192.168.56.102/restconf/data/ietf-interfaces:interfaces/interface="+name
-    headers = {"Accept": "application/yang-data+json",
-               "Content-type": "application/yang-data+json"
-               }
-
-    basicauth = ("cisco", "cisco123!")
-
-    resp = requests.delete(api_url, auth=basicauth, headers=headers, verify=False)
-    if (resp.status_code >= 200 and resp.status_code <= 299):
-        print("STATUS OK: {}".format(resp.status_code))
-    else:
-        print("Error code {}, reply: {}".format(resp.status_code, resp.json()))
-    print(name)
+    # print(name)
+    deleteinter(name)
     return redirect('/parsexml/')
-    return JsonResponse("delete success", safe=False)

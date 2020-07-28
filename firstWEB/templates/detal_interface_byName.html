@@ -118,29 +118,33 @@
 
         <!-- Main content -->
         <section class="content">
- {{ data1 }}
+            {{ data1 }}
             <br/>
             <br/>
 
-{{ data1_v.name }}
+            {{ data1_v.name }}
 
 
-    <form action="{% url 'editinterface' %}" method="post">
-         {% csrf_token %}
-    <div class="form-group">
-    <label for="name">Interface Name</label>
-    <input type="text" name="interface_name" class="form-control" id="name" value="{{ data1_v.name }}" readonly="readonly">
-        <label for="name">Interface Type</label>
-    <input type="text" name="interfacetype" class="form-control" id="name" placeholder="please input interface type" value="{{ interfacetype }}">
-        <label for="name">Interface IP</label>
-    <input type="text" name="interface_ip" class="form-control" id="name" placeholder="please input interface ip" value="{{ ip }}">
-        <label for="name">Interface Description</label>
-    <input type="text" name="interface_description" class="form-control" id="name" placeholder="please input interface description" value="{{ description }}">
-        <br/>
-        <br/>
-        <button type="submit" class="btn btn-danger">SUBMIT</button>
-    </div>
-    </form>
+            <form action="{% url 'editinterface' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Interface Name</label>
+                    <input type="text" name="interface_name" class="form-control" id="name" value="{{ data1_v.name }}"
+                           readonly="readonly">
+                    <label for="name">Interface Type</label>
+                    <input type="text" name="interfacetype" class="form-control" id="name"
+                           placeholder="please input interface type" value="{{ interfacetype }}">
+                    <label for="name">Interface IP</label>
+                    <input type="text" name="interface_ip" class="form-control" id="name"
+                           placeholder="please input interface ip" value="{{ ip }}">
+                    <label for="name">Interface Description</label>
+                    <input type="text" name="interface_description" class="form-control" id="name"
+                           placeholder="please input interface description" value="{{ description }}">
+                    <br/>
+                    <br/>
+                    <button type="submit" class="btn btn-danger">SUBMIT</button>
+                </div>
+            </form>
         </section><!-- /.content -->
     </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
