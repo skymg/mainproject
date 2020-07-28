@@ -75,30 +75,25 @@
                 </li>
                 <li class="active">
                     <a href="../add_interFaceFromTable">
-                        <i class="fa fa-dashboard"></i> <span>Add Interface</span>
+                        <i class="glyphicon glyphicon-plus"></i> <span>Add Interface</span>
                     </a>
                 </li>
                 <li class="active">
                     <a href="../load_deletp_page">
-                        <i class="fa fa-dashboard"></i> <span>load_deletp_page</span>
+                        <i class="glyphicon glyphicon-trash"></i> <span>Delete Interface</span>
                     </a>
                 </li>
-                {#						<li class="active">#}
-                {#                             <a href="../get_interface_name">#}
-                {#                                <i class="fa fa-dashboard"></i> <span>Delete Interface</span>#}
-                {#                            </a>#}
-                {#                        </li>#}
-
                 <li class="active">
                     <a href="../show_all_interface">
-                        <i class="fa fa-dashboard"></i> <span>Show ALL Interface</span>
+                        <i class="glyphicon glyphicon-zoom-in"></i> <span>Show ALL Interface</span>
                     </a>
                 </li>
                 <li class="active">
                     <a href="../parsexml">
-                        <i class="fa fa-dashboard"></i> <span>InterFace Control</span>
+                        <i class="glyphicon glyphicon-edit"></i> <span>InterFace Control</span>
                     </a>
                 </li>
+
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -133,7 +128,7 @@
 
                             <th>Interface Name</th>
 
-                            <th>操作</th>
+                            <th>Operation</th>
                         </tr>
 
                         {% for inter in data %}
@@ -146,12 +141,12 @@
 
                                     <form action="" method="get">
                                         {% csrf_token %}
-                                        <a class="btn btn-info" href="/edit_show/?name={{ inter }}">编辑</a>
-                                        <a class="btn btn-danger" href="/delete_show/?name={{ inter }}">删除</a>
+                                        <a class="btn btn-info" href="/edit_show/?name={{ inter }}">EDIT</a>
+{#                                        <a class="btn btn-danger" href="/delete_show/?name={{ inter }}">删除</a>#}
                                         {#                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">删除</button>#}
 
                                         <a class="btn btn-danger" href="javascript:void(0);"
-                                           onclick="delete_show('{{ inter }}')">shanchu</a>
+                                           onclick="delete_show('{{ inter }}')">DELETE</a>
 
                                     </form>
 
@@ -206,7 +201,7 @@
     })
 
     function delete_show(name) {
-        var isDel = confirm("您确认要删除吗？");
+        var isDel = confirm("Are you sure you want to delete it?");
         if (isDel) {
             //确认删除
             location.href = "/delete_show/?name=" + name
