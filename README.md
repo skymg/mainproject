@@ -5,4 +5,4 @@
 ###协议                    NETCONF/RESTCONF
 ###网络数据格式             JSON、XML
 
-![Image](https://github.com/skymg/CiscoTest/blob/master/imgdata/logo.jpg)
+![Image](https://github.com/skymg/mainproject/blob/master/firstWEB/static/bootstrap/img/webstructure.png)
